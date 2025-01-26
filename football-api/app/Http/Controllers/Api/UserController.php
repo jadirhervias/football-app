@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use Exception;
+use App\Enums\Roles;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\JsonResponse;
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -22,14 +23,13 @@ class UserController extends Controller
         ]);
 
         $url = env('APP_URL') . '/oauth/token';
-//        $url = 'http://laravel.test/oauth/token';
 
         $response = Http::post($url, [
             'grant_type' => 'password',
             'client_id' => env('PASSPORT_PASSWORD_CLIENT_ID'),
             'client_secret' => env('PASSPORT_PASSWORD_CLIENT_SECRET'),
-            'username' => $request->email,
-            'password' => $request->password,
+            'username' => $request->input('email'),
+            'password' => $request->input('password'),
             'scope' => '',
         ]);
 
@@ -37,22 +37,26 @@ class UserController extends Controller
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
+        $user = User::where('email', $request->input('email'))->first();
+
         return response()->json([
             'success' => true,
             'statusCode' => 200,
             'message' => 'User has been logged successfully.',
-            'data' => $response->json(),
+            'data' => array_merge($response->json(), [
+                'roles' => $user->roles->pluck('name'),
+                'permissions' => $user->roles->flatMap->permissions->pluck('name'),
+            ]),
         ]);
     }
 
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => "required|string",
-//            'email' => "required|string|unique:users",
-//            'phone' => "required | numeric|digits:10",
-            'email' => "required|string",
+            'email' => "required|string|unique:users",
+//            'email' => "required|string",
             'password' => "required|min:4",
-            'role' => "required|in:admin,guest"
+            'role' => ["required", Rule::enum(Roles::class)]
         ]);
 
         if ($validator->fails()) {
@@ -64,16 +68,18 @@ class UserController extends Controller
             return response()->json($result, 400);
         }
 
-        $user = User::query()->where('email', $request->email)->first();
+        $user = User::query()->where('email', $request->input('email'))->first();
 
         if (is_null($user)) {
             $user = User::create([
-                'name'=>$request->name,
-                'email'=>$request->email,
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
 //            'phone'=>$request->phone,
-                'password'=>$request->password,
+                'password' => $request->input('password'),
                 'email_verified_at' => now(),
             ]);
+
+            $user->assignRole($request->enum('role', Roles::class));
         }
 
         return response()->json([
@@ -88,7 +94,7 @@ class UserController extends Controller
     {
         $response = Http::asForm()->post(env('APP_URL') . '/oauth/token', [
             'grant_type' => 'refresh_token',
-            'refresh_token' => $request->refresh_token,
+            'refresh_token' => $request->input('refresh_token'),
             'client_id' => env('PASSPORT_PASSWORD_CLIENT_ID'),
             'client_secret' => env('PASSPORT_PASSWORD_CLIENT_SECRET'),
             'scope' => '',
@@ -149,7 +155,7 @@ class UserController extends Controller
 
         // Use Laravel's built-in functionality to send the reset link.
         // Generate the reset token and send the reset email
-        $status = Password::sendResetLink(['email' => $request->email]);
+        $status = Password::sendResetLink(['email' => $request->input('email')]);
 
         if ($status !== Password::RESET_LINK_SENT) {
             return response()->json([

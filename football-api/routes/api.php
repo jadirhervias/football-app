@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 
@@ -15,6 +14,9 @@ Route::post('password/reset', [UserController::class, 'resetPassword'])->name('p
 
 // Secure routes within auth middleware
 Route::middleware('auth:api')->group(function() {
+//    Route::group(['middleware' => ['role:super_admin|admin']], function () {
+//    });
+
     Route::get('me', [UserController::class, 'me']);
     //    Route::get('user', [UserController::class, 'getUsers']);
     Route::post('logout', [UserController::class, 'logout']);

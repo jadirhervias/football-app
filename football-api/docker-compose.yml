@@ -19,11 +19,6 @@ services:
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
         volumes:
             - '.:/var/www/html'
-            - './database.sqlite:/var/www/html/database/database.sqlite'
-        entrypoint: [
-            "sh",
-            "-c", "if [ ! -f /var/www/html/database/database.sqlite ]; then touch /var/www/html/database/database.sqlite && php artisan migrate; fi && php-fpm"
-        ]
         networks:
             - sail
         depends_on:

@@ -34,5 +34,14 @@ enum Permissions: string
     {
         return explode('_', $this->value)[1];
     }
+
+    public static function fromArray($values): array {
+        return array_filter(
+            array_map(
+                fn($value) => Permissions::tryFrom($value),
+                $values
+            )
+        );
+    }
 }
 

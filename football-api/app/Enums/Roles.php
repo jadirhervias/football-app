@@ -33,4 +33,13 @@ enum Roles: string
             ],
         };
     }
+
+    public static function fromArray($values): array {
+         return array_filter(
+            array_map(
+                fn($value) => Roles::tryFrom($value),
+                $values
+            )
+        );
+    }
 }

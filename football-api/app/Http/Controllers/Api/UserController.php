@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enums\Roles;
-use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -11,85 +9,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function login(Request $request){
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $url = env('APP_URL') . '/oauth/token';
-
-        $response = Http::post($url, [
-            'grant_type' => 'password',
-            'client_id' => env('PASSPORT_PASSWORD_CLIENT_ID'),
-            'client_secret' => env('PASSPORT_PASSWORD_CLIENT_SECRET'),
-            'username' => $request->input('email'),
-            'password' => $request->input('password'),
-            'scope' => '',
-        ]);
-
-        if ($response->failed()) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
-
-        $user = User::where('email', $request->input('email'))->first();
-
-        return response()->json([
-            'success' => true,
-            'statusCode' => 200,
-            'message' => 'User has been logged successfully.',
-            'data' => array_merge($response->json(), [
-                'roles' => $user->roles->pluck('name'),
-                'permissions' => $user->roles->flatMap->permissions->pluck('name'),
-            ]),
-        ]);
-    }
-
-    public function register(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => "required|string",
-            'email' => "required|string|unique:users",
-//            'email' => "required|string",
-            'password' => "required|min:4",
-            'role' => ["required", Rule::enum(Roles::class)]
-        ]);
-
-        if ($validator->fails()) {
-            $result = array(
-                'status' => false,
-                'message' => "Validation error occured",
-                'error_message' => $validator->errors()
-            );
-            return response()->json($result, 400);
-        }
-
-        $user = User::query()->where('email', $request->input('email'))->first();
-
-        if (is_null($user)) {
-            $user = User::create([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-//            'phone'=>$request->phone,
-                'password' => $request->input('password'),
-                'email_verified_at' => now(),
-            ]);
-
-            $user->assignRole($request->enum('role', Roles::class));
-        }
-
-        return response()->json([
-            'success' => true,
-            'statusCode' => 201,
-            'message' => 'User has been registered successfully.',
-            'data' => $user,
-        ], 201);
-    }
-
     public function refreshToken(Request $request): JsonResponse
     {
         $response = Http::asForm()->post(env('APP_URL') . '/oauth/token', [

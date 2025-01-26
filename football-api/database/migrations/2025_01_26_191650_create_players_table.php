@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('external_id');
+            $table->string('external_id')->unique();
             $table->string('name')->nullable();
             $table->string('position')->nullable();
             $table->date('date_of_birth')->nullable();

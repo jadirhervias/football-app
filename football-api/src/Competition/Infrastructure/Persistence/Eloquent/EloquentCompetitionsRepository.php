@@ -45,8 +45,21 @@ class EloquentCompetitionsRepository extends EloquentRepository implements Compe
         return $competition ? $this->serializer($competition) : null;
     }
 
+    /** @return array<Competition> */
     public function getAll(int $limit, int $offset): array
     {
-        return $this->builder()->limit($limit)->offset($offset)->get()->toArray();
+        $results = $this->builder()->limit($limit)->offset($offset)->get()->toArray();
+
+        return array_map(fn($item) => $this->serializer($item), $results);
+    }
+
+    /**
+     * @param Competition[] $competitions
+     * @return void
+     */
+    public function insertMany(array $competitions): void
+    {
+        $primitives = array_map(fn(Competition $competition) => $competition->toPrimitives(), $competitions);
+        $this->builder()->upsert($primitives, ['external_id']);
     }
 }

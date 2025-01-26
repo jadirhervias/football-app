@@ -3,7 +3,7 @@
 namespace Src\Competition\Application\FindAll;
 
 use Src\Competition\Domain\Competition;
-use Src\Competition\Domain\CompetitionsRepository;
+//use Src\Competition\Domain\CompetitionsRepository;
 use Src\Competition\Infrastructure\FootballApi\FootballApiCompetitions;
 
 class CompetitionAllFinder

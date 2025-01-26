@@ -52,6 +52,6 @@ class EloquentPlayersRepository extends EloquentRepository implements PlayersRep
     public function insertMany(array $players): void
     {
         $primitives = array_map(fn(Player $player) => $player->toPrimitives(), $players);
-        $this->builder()->insert($primitives);
+        $this->builder()->upsert($primitives, ['external_id']);
     }
 }

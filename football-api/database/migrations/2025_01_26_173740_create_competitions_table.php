@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('competitions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('external_id');
+            $table->string('external_id')->unique();
             $table->string('name')->nullable();
             $table->string('code')->nullable();
             $table->string('type')->nullable();

@@ -52,6 +52,6 @@ class EloquentTeamsRepository extends EloquentRepository implements TeamsReposit
     public function insertMany(array $teams): void
     {
         $primitives = array_map(fn(Team $team) => $team->toPrimitives(), $teams);
-        $this->builder()->insert($primitives);
+        $this->builder()->upsert($primitives, ['external_id']);
     }
 }

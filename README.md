@@ -1,5 +1,13 @@
 # Setup project
 
+## User credentials for test:
+```json
+{
+    "email": "admin@example.com",
+    "password": "password"
+}
+```
+
 ## Backend
 
 - Requirements:
@@ -7,7 +15,9 @@
     - Laravel 11
     - PHP 8.4
 
-#### Run services
+> Download [Postman collection](./football-api/etc/LARAVEL-FOOTBALL-API.postman_collection.json)
+
+#### Follow the steps
 ```bash
 # Place in the API root directory
 cd football-api
@@ -46,14 +56,11 @@ alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
     - Node
     - NPM
 
+> Open [Vue app link](http://localhost:5173) 
+
 #### Follow the steps
 ```bash
-# Place in the SPA root directory
-cd football-api
-
-# Install dependencies
 npm i
 
-# Run project in dev mode
 npm run dev
 ```

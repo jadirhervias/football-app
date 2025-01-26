@@ -37,13 +37,16 @@ alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 # Start backend services
 #./vendor/bin/sail up
 ./vendor/bin/sail up --build
+```
+#### Open a new terminal and follow the next steps
 
+```bash
 # Run migrations
 ./vendor/bin/sail php artisan migrate --seed
 
 # Configure passport
 ./vendor/bin/sail php artisan passport:client --password
-# Set env vars...
+# Set env vars with the results...
 # PASSPORT_PASSWORD_CLIENT_ID=
 # PASSPORT_PASSWORD_CLIENT_SECRET=
 

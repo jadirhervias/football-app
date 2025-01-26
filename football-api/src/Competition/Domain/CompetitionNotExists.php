@@ -6,7 +6,7 @@ use Src\Shared\Domain\DomainError;
 
 class CompetitionNotExists extends DomainError
 {
-    public function __construct(private readonly string $id)
+    public function __construct(private readonly string $competitionCode)
     {
         parent::__construct();
     }
@@ -18,6 +18,6 @@ class CompetitionNotExists extends DomainError
 
     public function errorMessage(): string
     {
-        return sprintf('Competition with id <%s> not exists', $this->id);
+        return sprintf('Competition with code <%s> not exists', $this->competitionCode);
     }
 }

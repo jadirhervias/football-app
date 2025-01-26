@@ -9,7 +9,7 @@ use Src\Competition\Infrastructure\FootballApi\FootballApiCompetitions;
 class CompetitionAllFinder
 {
     public function __construct(
-        private readonly FootballApiCompetitions $dataSource,
+        private readonly FootballApiCompetitions $competitionsApi,
 //        private readonly CompetitionsRepository $repository,
     )
     {
@@ -18,6 +18,6 @@ class CompetitionAllFinder
     /** @return array<Competition> */
     public function __invoke(FindAllCompetitionRequest $request): array
     {
-        return $this->dataSource->getAll($request->limit(), $request->offset());
+        return $this->competitionsApi->getAll($request->limit(), $request->offset());
     }
 }

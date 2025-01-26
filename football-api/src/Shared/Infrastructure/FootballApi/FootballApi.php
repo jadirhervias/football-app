@@ -19,17 +19,17 @@ abstract class FootballApi
     /**
      * Define the resource name to be appended to the base URL.
      */
-    abstract protected function resourceName(): string;
+    abstract public function resourceName(): string;
 
     /**
      * Serialize the response data into a specific model.
      */
-    abstract protected function responseSerializer(array $data): AggregateRoot;
+    abstract public function responseSerializer(array $data): AggregateRoot;
 
     /**
      * Get the full resource endpoint URL.
      */
-    private function getResourceEndpoint(): string
+    protected function getResourceEndpoint(): string
     {
         return $this->baseUrl . '/' . $this->resourceName();
     }

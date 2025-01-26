@@ -7,24 +7,23 @@ use Illuminate\Http\JsonResponse;
 use Src\Competition\Application\Find\FindCompetitionRequest;
 use Src\Competition\Application\Find\CompetitionFinder;
 
-class FindGetController extends Controller
+class FindCompetitionGetController extends Controller
 {
     public function __construct(private readonly CompetitionFinder $finder)
     {
     }
 
-//    /**
-//     * Handle the incoming request.
-//     *
-//     * @param LoginPostRequest $request
-//     * @return JsonResponse
-//     */
+    /**
+     * Handle the incoming request.
+     *
+     * @param string $code
+     * @return JsonResponse
+     */
     public function __invoke(
-        string $id
-//        LoginPostRequest $request
+        string $code
     ): JsonResponse
     {
-        $competition = $this->finder->__invoke(new FindCompetitionRequest($id));
+        $competition = $this->finder->__invoke(new FindCompetitionRequest($code));
 
         return response()->json([
             'success' => true,

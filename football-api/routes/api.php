@@ -18,8 +18,17 @@ Route::middleware('auth:api')->group(function() {
 //    });
 
     Route::prefix('competitions')->group(function () {
-        Route::get('/', \App\Http\Controllers\Api\Competition\AllGetController::class);
-        Route::get('/{id}', \App\Http\Controllers\Api\Competition\FindGetController::class);
+        Route::get('/', \App\Http\Controllers\Api\Competition\AllCompetitionsGetController::class);
+        Route::get('/{id}', \App\Http\Controllers\Api\Competition\FindCompetitionGetController::class);
+    });
+
+    Route::prefix('teams')->group(function () {
+        Route::get('/', \App\Http\Controllers\Api\Team\AllTeamsGetController::class);
+        Route::get('/{id}', \App\Http\Controllers\Api\Team\FindTeamGetController::class);
+    });
+
+    Route::prefix('players')->group(function () {
+        Route::get('/', \App\Http\Controllers\Api\Player\AllPlayersGetController::class);
     });
 
     Route::get('me', [UserController::class, 'me']);

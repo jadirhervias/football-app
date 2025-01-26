@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('competitions', function (Blueprint $table) {
+        Schema::create('players', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('external_id');
             $table->string('name')->nullable();
-            $table->string('code')->nullable();
-            $table->string('type')->nullable();
-            $table->string('emblem')->nullable();
-            $table->integer('number_of_available_seasons')->nullable();
-            $table->string('area_code')->nullable();
-            $table->string('area_flag')->nullable();
+            $table->string('position')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('nationality')->nullable();
+            $table->integer('shirt_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('competitions');
+        Schema::dropIfExists('players');
     }
 };

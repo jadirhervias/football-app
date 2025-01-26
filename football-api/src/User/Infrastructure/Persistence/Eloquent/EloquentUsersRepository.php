@@ -8,12 +8,11 @@ use App\Models\User as UserEloquentModel;
 use Src\Shared\Domain\Utils;
 use Src\User\Domain\User;
 use Src\User\Domain\UsersRepository;
-use Src\Shared\Domain\AggregateRoot;
 use Src\Shared\Infrastructure\Persistence\Eloquent\EloquentRepository;
 
 class EloquentUsersRepository extends EloquentRepository implements UsersRepository
 {
-    function serializer($attributes): AggregateRoot
+    function serializer($attributes): User
     {
         return new User(
             $attributes['uuid'],

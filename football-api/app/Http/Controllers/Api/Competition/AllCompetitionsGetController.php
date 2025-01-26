@@ -7,7 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Src\Competition\Application\FindAll\FindAllCompetitionRequest;
 use Src\Competition\Application\FindAll\CompetitionAllFinder;
 
-class AllGetController extends Controller
+class AllCompetitionsGetController extends Controller
 {
     public function __construct(private readonly CompetitionAllFinder $finder)
     {

@@ -5,13 +5,13 @@ namespace Src\Competition\Application\Find;
 class FindCompetitionRequest
 {
     public function __construct(
-        private readonly string $id,
+        private readonly string $code,
     )
     {
     }
 
-    public function id(): string
+    public function code(): string
     {
-        return $this->id;
+        return $this->code;
     }
 }

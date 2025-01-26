@@ -7,21 +7,13 @@ use Src\Shared\Domain\EnhancedDateTime;
 
 class Competition extends AggregateRoot
 {
-//"area_code": "BRA"
-//"area_flag": "https://crests.football-data.org/764.svg"
-//"external_id": 2013,
-//"name": "Campeonato Brasileiro Série A",
-//"code": "BSA",
-//"type": "LEAGUE",
-//"emblem": "https://crests.football-data.org/bsa.png",
-//"numberOfAvailableSeasons": 9,
     public function __construct(
         private readonly string $id,
-        private readonly string $name,
-        private readonly string $code,
         private readonly string $externalId,
-        private readonly string $type,
-        private readonly string $emblem,
+        private readonly ?string $name,
+        private readonly ?string $code,
+        private readonly ?string $type,
+        private readonly ?string $emblem,
         private readonly ?int $numberOfAvailableSeasons,
         private readonly ?string $areaCode,
         private readonly ?string $areaFlag,
@@ -36,9 +28,9 @@ class Competition extends AggregateRoot
         $now = EnhancedDateTime::now()->format();
         return new self(
             $attributes['id'],
+            $attributes['external_id'],
             $attributes['name'],
             $attributes['code'],
-            $attributes['external_id'],
             $attributes['type'],
             $attributes['emblem'],
             $attributes['number_of_available_seasons'],

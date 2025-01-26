@@ -1,0 +1,731 @@
+{
+	"info": {
+		"_postman_id": "0b5c01a2-ed8a-4c4b-a980-e873a7a98764",
+		"name": "LARAVEL-FOOTBALL-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10895738"
+	},
+	"item": [
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "LOGOUT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{6000}}/api/logout",
+							"host": [
+								"{{6000}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Competitions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{6000}}/api/competitions",
+							"host": [
+								"{{6000}}"
+							],
+							"path": [
+								"api",
+								"competitions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"def502004db27760c18a4d5a0829903d71aa5d3bdd2573006e2ded1b1fbdb8c1876a9eedc7f4d1c9f1764cffca2faf47981bfe79431b0a155bd4a28cbfd1488afd9e8d9c168391eedf41040c5c0bcb708384f5c9538790a0f4ff422a6814745e5b7b9e5b4344b580a6e769727a80f4a3f26d17f65c335329654421cae0f2c72b6223acc82974851955a283d3ca30e8ce86e5809d97f6a8b16b8393ac690dcf2a98608c73bc211d67d4a767069a2adfe162e5acdaa5e8e44a6b09a49d081564e595fe7792bf7bfc67a40aaa9d0d20b6cc41c962b19cb52571c7b1ec065caeebcca34159e6618400f5cc427a9527278bf8dfce3cb42e98f16544d2ecf5970a0b2853e0c7b876b36b333539c0e3ebc30865bca96e0552d83e3363198ad580af0d19e37742cf13232e4a1128028c0e179e96e78eef095fd578b69d1110df9cf42a809b9f056198d8b04221c02d795d874b80fb3dc4129cf570967d5e8cae6f09a0e15581d19120af3bfe69c15eb2770fc37a052bd67ab0c29eb921eac7af8226f17e7f3d4034\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:6000/api/auth/refresh-token",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Jan 2025 18:44:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"Refreshed token.\",\n    \"data\": {\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 1296000,\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTBkMTFjMC05Yzk1LTRmMTMtODk1ZS04NTZlYjE4MDI4MmYiLCJqdGkiOiI3YTczM2FlZTgyYzQ1ZmI2YTI4NWY0YzUxNmFmNmVlMTQ3NTI0ZjlhMTMzY2RjN2E4ZmUzMjRhNTQ2NDhkNDM0ODczNjdhOTM2Yjg2MGIxYiIsImlhdCI6MTczNzgzMDY2Ny44MzMxODEsIm5iZiI6MTczNzgzMDY2Ny44MzMxODMsImV4cCI6MTczOTEyNjY2Ny44MjY1ODksInN1YiI6IjYiLCJzY29wZXMiOltdfQ.XRu-xTU1CXJqaxFog3fybbpgRHNF27faGO3-KThkJPl5_h6cWJY5aLZ4bb8lVgOy-uioz8V2MlLH9I38hXMqrlwnsUK2uzP5AgDmYtiNNaVemE380Y4HQI3uMXaXpwCAuLw2qP-cInX_SYghMaTBwvMoQLTSoiXCOP0j8-BVrORUv1ffLhreM7xMXG1UF1AQ2D3pYU00KKZDq_2SbbS1e3sj3OKckO4L44WSd6xjy0ftbXlVjW2AowMxfwgBaahIv1pgML5k1JNcPGWr0xFx8jYorJKPlWVHwFsb7DdXVoCOgdgJHPKpRMwPrzoxALvP4iy383WRJ5AtWrVCU64ua6e3vb0arAm3n9Ccj5OjYh7tOKig9OBBhLWt40FNN9Bz6QKCsD2nKhCcxXF6coTTRaB5kPp6BnQ8oteMnFczwtYl-lvxb2_Nzl6HIpGJxu34P2RuaqzV9eOAIdhS9Ks65VuEwlsMDVQCP7Jvxb429FWVAGzCsl1ffqjue-WyHfbLsxs1k8XW8hOM_X99lLOGM3ikXk00oWTIA4iXQ49xcpdUjGYcDrVPm1-IOPGUCrCXAb547uOgofxfWPPotuHe_CRk-H2Pltf89dTeJgsI9RrtTe1zikc6R8z1R9DKWXCgG0aicvBC3ry8msjUhEW4vaSHk-u-Y0R8KhaH7UANREE\",\n        \"refresh_token\": \"def50200429adefa257428e2be2b6c0c5df0b6bc49e8cf95a66e2e7b9f3a84014bf601519ea9b82817d3e7620b74b6792ee536105e1e18e86d0d8d31b60dd65c7038586bc17101ad6508a4164d6de6a1ab4eac3d3cea0bd25b53acb4be3014d269d8b669d48d2bf016c859c5321bfd85f3864da96b22bb0eb9229177f9d958b1ea950e1f9e5f4e8b9b8833194377ebd997aae3a627e471baefff44c656cbdf6b91ec1f7b329484e831a665ce5b268a54dcd144d8ebbb6bddd7fca45d2ef240fe9c16a088cedb2f0d714b1f4f803847b420879dd23afb128569be22942e475ad15847d992b2f7b6da3825778332ee046fee81ae47cd29c0e013da3c3b0245ed2606b3c7eb20c62801406e54379202556441bf626a251a239d93cf42ea56b84cbe82637be3bfed42b5f8e27ecaaf61a189508336dc97fc147ff19c1293217d5f411a412ba8dff37cb9d80c52d0a704ddb689f0284f7229ebce88b3add2d5bf0f3addae731bd06e6d53bbdf3e8df9c87d801c83b151f4ff7992bb1ab2088448f2f47b849f68\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Competition BY code",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{6000}}/api/competitions/WC",
+							"host": [
+								"{{6000}}"
+							],
+							"path": [
+								"api",
+								"competitions",
+								"WC"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"def502004db27760c18a4d5a0829903d71aa5d3bdd2573006e2ded1b1fbdb8c1876a9eedc7f4d1c9f1764cffca2faf47981bfe79431b0a155bd4a28cbfd1488afd9e8d9c168391eedf41040c5c0bcb708384f5c9538790a0f4ff422a6814745e5b7b9e5b4344b580a6e769727a80f4a3f26d17f65c335329654421cae0f2c72b6223acc82974851955a283d3ca30e8ce86e5809d97f6a8b16b8393ac690dcf2a98608c73bc211d67d4a767069a2adfe162e5acdaa5e8e44a6b09a49d081564e595fe7792bf7bfc67a40aaa9d0d20b6cc41c962b19cb52571c7b1ec065caeebcca34159e6618400f5cc427a9527278bf8dfce3cb42e98f16544d2ecf5970a0b2853e0c7b876b36b333539c0e3ebc30865bca96e0552d83e3363198ad580af0d19e37742cf13232e4a1128028c0e179e96e78eef095fd578b69d1110df9cf42a809b9f056198d8b04221c02d795d874b80fb3dc4129cf570967d5e8cae6f09a0e15581d19120af3bfe69c15eb2770fc37a052bd67ab0c29eb921eac7af8226f17e7f3d4034\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:6000/api/auth/refresh-token",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Jan 2025 18:44:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"Refreshed token.\",\n    \"data\": {\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 1296000,\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTBkMTFjMC05Yzk1LTRmMTMtODk1ZS04NTZlYjE4MDI4MmYiLCJqdGkiOiI3YTczM2FlZTgyYzQ1ZmI2YTI4NWY0YzUxNmFmNmVlMTQ3NTI0ZjlhMTMzY2RjN2E4ZmUzMjRhNTQ2NDhkNDM0ODczNjdhOTM2Yjg2MGIxYiIsImlhdCI6MTczNzgzMDY2Ny44MzMxODEsIm5iZiI6MTczNzgzMDY2Ny44MzMxODMsImV4cCI6MTczOTEyNjY2Ny44MjY1ODksInN1YiI6IjYiLCJzY29wZXMiOltdfQ.XRu-xTU1CXJqaxFog3fybbpgRHNF27faGO3-KThkJPl5_h6cWJY5aLZ4bb8lVgOy-uioz8V2MlLH9I38hXMqrlwnsUK2uzP5AgDmYtiNNaVemE380Y4HQI3uMXaXpwCAuLw2qP-cInX_SYghMaTBwvMoQLTSoiXCOP0j8-BVrORUv1ffLhreM7xMXG1UF1AQ2D3pYU00KKZDq_2SbbS1e3sj3OKckO4L44WSd6xjy0ftbXlVjW2AowMxfwgBaahIv1pgML5k1JNcPGWr0xFx8jYorJKPlWVHwFsb7DdXVoCOgdgJHPKpRMwPrzoxALvP4iy383WRJ5AtWrVCU64ua6e3vb0arAm3n9Ccj5OjYh7tOKig9OBBhLWt40FNN9Bz6QKCsD2nKhCcxXF6coTTRaB5kPp6BnQ8oteMnFczwtYl-lvxb2_Nzl6HIpGJxu34P2RuaqzV9eOAIdhS9Ks65VuEwlsMDVQCP7Jvxb429FWVAGzCsl1ffqjue-WyHfbLsxs1k8XW8hOM_X99lLOGM3ikXk00oWTIA4iXQ49xcpdUjGYcDrVPm1-IOPGUCrCXAb547uOgofxfWPPotuHe_CRk-H2Pltf89dTeJgsI9RrtTe1zikc6R8z1R9DKWXCgG0aicvBC3ry8msjUhEW4vaSHk-u-Y0R8KhaH7UANREE\",\n        \"refresh_token\": \"def50200429adefa257428e2be2b6c0c5df0b6bc49e8cf95a66e2e7b9f3a84014bf601519ea9b82817d3e7620b74b6792ee536105e1e18e86d0d8d31b60dd65c7038586bc17101ad6508a4164d6de6a1ab4eac3d3cea0bd25b53acb4be3014d269d8b669d48d2bf016c859c5321bfd85f3864da96b22bb0eb9229177f9d958b1ea950e1f9e5f4e8b9b8833194377ebd997aae3a627e471baefff44c656cbdf6b91ec1f7b329484e831a665ce5b268a54dcd144d8ebbb6bddd7fca45d2ef240fe9c16a088cedb2f0d714b1f4f803847b420879dd23afb128569be22942e475ad15847d992b2f7b6da3825778332ee046fee81ae47cd29c0e013da3c3b0245ed2606b3c7eb20c62801406e54379202556441bf626a251a239d93cf42ea56b84cbe82637be3bfed42b5f8e27ecaaf61a189508336dc97fc147ff19c1293217d5f411a412ba8dff37cb9d80c52d0a704ddb689f0284f7229ebce88b3add2d5bf0f3addae731bd06e6d53bbdf3e8df9c87d801c83b151f4ff7992bb1ab2088448f2f47b849f68\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Teams",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{6000}}/api/teams",
+							"host": [
+								"{{6000}}"
+							],
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"def502004db27760c18a4d5a0829903d71aa5d3bdd2573006e2ded1b1fbdb8c1876a9eedc7f4d1c9f1764cffca2faf47981bfe79431b0a155bd4a28cbfd1488afd9e8d9c168391eedf41040c5c0bcb708384f5c9538790a0f4ff422a6814745e5b7b9e5b4344b580a6e769727a80f4a3f26d17f65c335329654421cae0f2c72b6223acc82974851955a283d3ca30e8ce86e5809d97f6a8b16b8393ac690dcf2a98608c73bc211d67d4a767069a2adfe162e5acdaa5e8e44a6b09a49d081564e595fe7792bf7bfc67a40aaa9d0d20b6cc41c962b19cb52571c7b1ec065caeebcca34159e6618400f5cc427a9527278bf8dfce3cb42e98f16544d2ecf5970a0b2853e0c7b876b36b333539c0e3ebc30865bca96e0552d83e3363198ad580af0d19e37742cf13232e4a1128028c0e179e96e78eef095fd578b69d1110df9cf42a809b9f056198d8b04221c02d795d874b80fb3dc4129cf570967d5e8cae6f09a0e15581d19120af3bfe69c15eb2770fc37a052bd67ab0c29eb921eac7af8226f17e7f3d4034\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:6000/api/auth/refresh-token",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Jan 2025 18:44:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"Refreshed token.\",\n    \"data\": {\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 1296000,\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTBkMTFjMC05Yzk1LTRmMTMtODk1ZS04NTZlYjE4MDI4MmYiLCJqdGkiOiI3YTczM2FlZTgyYzQ1ZmI2YTI4NWY0YzUxNmFmNmVlMTQ3NTI0ZjlhMTMzY2RjN2E4ZmUzMjRhNTQ2NDhkNDM0ODczNjdhOTM2Yjg2MGIxYiIsImlhdCI6MTczNzgzMDY2Ny44MzMxODEsIm5iZiI6MTczNzgzMDY2Ny44MzMxODMsImV4cCI6MTczOTEyNjY2Ny44MjY1ODksInN1YiI6IjYiLCJzY29wZXMiOltdfQ.XRu-xTU1CXJqaxFog3fybbpgRHNF27faGO3-KThkJPl5_h6cWJY5aLZ4bb8lVgOy-uioz8V2MlLH9I38hXMqrlwnsUK2uzP5AgDmYtiNNaVemE380Y4HQI3uMXaXpwCAuLw2qP-cInX_SYghMaTBwvMoQLTSoiXCOP0j8-BVrORUv1ffLhreM7xMXG1UF1AQ2D3pYU00KKZDq_2SbbS1e3sj3OKckO4L44WSd6xjy0ftbXlVjW2AowMxfwgBaahIv1pgML5k1JNcPGWr0xFx8jYorJKPlWVHwFsb7DdXVoCOgdgJHPKpRMwPrzoxALvP4iy383WRJ5AtWrVCU64ua6e3vb0arAm3n9Ccj5OjYh7tOKig9OBBhLWt40FNN9Bz6QKCsD2nKhCcxXF6coTTRaB5kPp6BnQ8oteMnFczwtYl-lvxb2_Nzl6HIpGJxu34P2RuaqzV9eOAIdhS9Ks65VuEwlsMDVQCP7Jvxb429FWVAGzCsl1ffqjue-WyHfbLsxs1k8XW8hOM_X99lLOGM3ikXk00oWTIA4iXQ49xcpdUjGYcDrVPm1-IOPGUCrCXAb547uOgofxfWPPotuHe_CRk-H2Pltf89dTeJgsI9RrtTe1zikc6R8z1R9DKWXCgG0aicvBC3ry8msjUhEW4vaSHk-u-Y0R8KhaH7UANREE\",\n        \"refresh_token\": \"def50200429adefa257428e2be2b6c0c5df0b6bc49e8cf95a66e2e7b9f3a84014bf601519ea9b82817d3e7620b74b6792ee536105e1e18e86d0d8d31b60dd65c7038586bc17101ad6508a4164d6de6a1ab4eac3d3cea0bd25b53acb4be3014d269d8b669d48d2bf016c859c5321bfd85f3864da96b22bb0eb9229177f9d958b1ea950e1f9e5f4e8b9b8833194377ebd997aae3a627e471baefff44c656cbdf6b91ec1f7b329484e831a665ce5b268a54dcd144d8ebbb6bddd7fca45d2ef240fe9c16a088cedb2f0d714b1f4f803847b420879dd23afb128569be22942e475ad15847d992b2f7b6da3825778332ee046fee81ae47cd29c0e013da3c3b0245ed2606b3c7eb20c62801406e54379202556441bf626a251a239d93cf42ea56b84cbe82637be3bfed42b5f8e27ecaaf61a189508336dc97fc147ff19c1293217d5f411a412ba8dff37cb9d80c52d0a704ddb689f0284f7229ebce88b3add2d5bf0f3addae731bd06e6d53bbdf3e8df9c87d801c83b151f4ff7992bb1ab2088448f2f47b849f68\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Team BY ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{6000}}/api/teams/2000",
+							"host": [
+								"{{6000}}"
+							],
+							"path": [
+								"api",
+								"teams",
+								"2000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"def502004db27760c18a4d5a0829903d71aa5d3bdd2573006e2ded1b1fbdb8c1876a9eedc7f4d1c9f1764cffca2faf47981bfe79431b0a155bd4a28cbfd1488afd9e8d9c168391eedf41040c5c0bcb708384f5c9538790a0f4ff422a6814745e5b7b9e5b4344b580a6e769727a80f4a3f26d17f65c335329654421cae0f2c72b6223acc82974851955a283d3ca30e8ce86e5809d97f6a8b16b8393ac690dcf2a98608c73bc211d67d4a767069a2adfe162e5acdaa5e8e44a6b09a49d081564e595fe7792bf7bfc67a40aaa9d0d20b6cc41c962b19cb52571c7b1ec065caeebcca34159e6618400f5cc427a9527278bf8dfce3cb42e98f16544d2ecf5970a0b2853e0c7b876b36b333539c0e3ebc30865bca96e0552d83e3363198ad580af0d19e37742cf13232e4a1128028c0e179e96e78eef095fd578b69d1110df9cf42a809b9f056198d8b04221c02d795d874b80fb3dc4129cf570967d5e8cae6f09a0e15581d19120af3bfe69c15eb2770fc37a052bd67ab0c29eb921eac7af8226f17e7f3d4034\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:6000/api/auth/refresh-token",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Jan 2025 18:44:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"Refreshed token.\",\n    \"data\": {\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 1296000,\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTBkMTFjMC05Yzk1LTRmMTMtODk1ZS04NTZlYjE4MDI4MmYiLCJqdGkiOiI3YTczM2FlZTgyYzQ1ZmI2YTI4NWY0YzUxNmFmNmVlMTQ3NTI0ZjlhMTMzY2RjN2E4ZmUzMjRhNTQ2NDhkNDM0ODczNjdhOTM2Yjg2MGIxYiIsImlhdCI6MTczNzgzMDY2Ny44MzMxODEsIm5iZiI6MTczNzgzMDY2Ny44MzMxODMsImV4cCI6MTczOTEyNjY2Ny44MjY1ODksInN1YiI6IjYiLCJzY29wZXMiOltdfQ.XRu-xTU1CXJqaxFog3fybbpgRHNF27faGO3-KThkJPl5_h6cWJY5aLZ4bb8lVgOy-uioz8V2MlLH9I38hXMqrlwnsUK2uzP5AgDmYtiNNaVemE380Y4HQI3uMXaXpwCAuLw2qP-cInX_SYghMaTBwvMoQLTSoiXCOP0j8-BVrORUv1ffLhreM7xMXG1UF1AQ2D3pYU00KKZDq_2SbbS1e3sj3OKckO4L44WSd6xjy0ftbXlVjW2AowMxfwgBaahIv1pgML5k1JNcPGWr0xFx8jYorJKPlWVHwFsb7DdXVoCOgdgJHPKpRMwPrzoxALvP4iy383WRJ5AtWrVCU64ua6e3vb0arAm3n9Ccj5OjYh7tOKig9OBBhLWt40FNN9Bz6QKCsD2nKhCcxXF6coTTRaB5kPp6BnQ8oteMnFczwtYl-lvxb2_Nzl6HIpGJxu34P2RuaqzV9eOAIdhS9Ks65VuEwlsMDVQCP7Jvxb429FWVAGzCsl1ffqjue-WyHfbLsxs1k8XW8hOM_X99lLOGM3ikXk00oWTIA4iXQ49xcpdUjGYcDrVPm1-IOPGUCrCXAb547uOgofxfWPPotuHe_CRk-H2Pltf89dTeJgsI9RrtTe1zikc6R8z1R9DKWXCgG0aicvBC3ry8msjUhEW4vaSHk-u-Y0R8KhaH7UANREE\",\n        \"refresh_token\": \"def50200429adefa257428e2be2b6c0c5df0b6bc49e8cf95a66e2e7b9f3a84014bf601519ea9b82817d3e7620b74b6792ee536105e1e18e86d0d8d31b60dd65c7038586bc17101ad6508a4164d6de6a1ab4eac3d3cea0bd25b53acb4be3014d269d8b669d48d2bf016c859c5321bfd85f3864da96b22bb0eb9229177f9d958b1ea950e1f9e5f4e8b9b8833194377ebd997aae3a627e471baefff44c656cbdf6b91ec1f7b329484e831a665ce5b268a54dcd144d8ebbb6bddd7fca45d2ef240fe9c16a088cedb2f0d714b1f4f803847b420879dd23afb128569be22942e475ad15847d992b2f7b6da3825778332ee046fee81ae47cd29c0e013da3c3b0245ed2606b3c7eb20c62801406e54379202556441bf626a251a239d93cf42ea56b84cbe82637be3bfed42b5f8e27ecaaf61a189508336dc97fc147ff19c1293217d5f411a412ba8dff37cb9d80c52d0a704ddb689f0284f7229ebce88b3add2d5bf0f3addae731bd06e6d53bbdf3e8df9c87d801c83b151f4ff7992bb1ab2088448f2f47b849f68\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Players",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{6000}}/api/players",
+							"host": [
+								"{{6000}}"
+							],
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"def502004db27760c18a4d5a0829903d71aa5d3bdd2573006e2ded1b1fbdb8c1876a9eedc7f4d1c9f1764cffca2faf47981bfe79431b0a155bd4a28cbfd1488afd9e8d9c168391eedf41040c5c0bcb708384f5c9538790a0f4ff422a6814745e5b7b9e5b4344b580a6e769727a80f4a3f26d17f65c335329654421cae0f2c72b6223acc82974851955a283d3ca30e8ce86e5809d97f6a8b16b8393ac690dcf2a98608c73bc211d67d4a767069a2adfe162e5acdaa5e8e44a6b09a49d081564e595fe7792bf7bfc67a40aaa9d0d20b6cc41c962b19cb52571c7b1ec065caeebcca34159e6618400f5cc427a9527278bf8dfce3cb42e98f16544d2ecf5970a0b2853e0c7b876b36b333539c0e3ebc30865bca96e0552d83e3363198ad580af0d19e37742cf13232e4a1128028c0e179e96e78eef095fd578b69d1110df9cf42a809b9f056198d8b04221c02d795d874b80fb3dc4129cf570967d5e8cae6f09a0e15581d19120af3bfe69c15eb2770fc37a052bd67ab0c29eb921eac7af8226f17e7f3d4034\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:6000/api/auth/refresh-token",
+									"host": [
+										"localhost"
+									],
+									"port": "6000",
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Jan 2025 18:44:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"Refreshed token.\",\n    \"data\": {\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 1296000,\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTBkMTFjMC05Yzk1LTRmMTMtODk1ZS04NTZlYjE4MDI4MmYiLCJqdGkiOiI3YTczM2FlZTgyYzQ1ZmI2YTI4NWY0YzUxNmFmNmVlMTQ3NTI0ZjlhMTMzY2RjN2E4ZmUzMjRhNTQ2NDhkNDM0ODczNjdhOTM2Yjg2MGIxYiIsImlhdCI6MTczNzgzMDY2Ny44MzMxODEsIm5iZiI6MTczNzgzMDY2Ny44MzMxODMsImV4cCI6MTczOTEyNjY2Ny44MjY1ODksInN1YiI6IjYiLCJzY29wZXMiOltdfQ.XRu-xTU1CXJqaxFog3fybbpgRHNF27faGO3-KThkJPl5_h6cWJY5aLZ4bb8lVgOy-uioz8V2MlLH9I38hXMqrlwnsUK2uzP5AgDmYtiNNaVemE380Y4HQI3uMXaXpwCAuLw2qP-cInX_SYghMaTBwvMoQLTSoiXCOP0j8-BVrORUv1ffLhreM7xMXG1UF1AQ2D3pYU00KKZDq_2SbbS1e3sj3OKckO4L44WSd6xjy0ftbXlVjW2AowMxfwgBaahIv1pgML5k1JNcPGWr0xFx8jYorJKPlWVHwFsb7DdXVoCOgdgJHPKpRMwPrzoxALvP4iy383WRJ5AtWrVCU64ua6e3vb0arAm3n9Ccj5OjYh7tOKig9OBBhLWt40FNN9Bz6QKCsD2nKhCcxXF6coTTRaB5kPp6BnQ8oteMnFczwtYl-lvxb2_Nzl6HIpGJxu34P2RuaqzV9eOAIdhS9Ks65VuEwlsMDVQCP7Jvxb429FWVAGzCsl1ffqjue-WyHfbLsxs1k8XW8hOM_X99lLOGM3ikXk00oWTIA4iXQ49xcpdUjGYcDrVPm1-IOPGUCrCXAb547uOgofxfWPPotuHe_CRk-H2Pltf89dTeJgsI9RrtTe1zikc6R8z1R9DKWXCgG0aicvBC3ry8msjUhEW4vaSHk-u-Y0R8KhaH7UANREE\",\n        \"refresh_token\": \"def50200429adefa257428e2be2b6c0c5df0b6bc49e8cf95a66e2e7b9f3a84014bf601519ea9b82817d3e7620b74b6792ee536105e1e18e86d0d8d31b60dd65c7038586bc17101ad6508a4164d6de6a1ab4eac3d3cea0bd25b53acb4be3014d269d8b669d48d2bf016c859c5321bfd85f3864da96b22bb0eb9229177f9d958b1ea950e1f9e5f4e8b9b8833194377ebd997aae3a627e471baefff44c656cbdf6b91ec1f7b329484e831a665ce5b268a54dcd144d8ebbb6bddd7fca45d2ef240fe9c16a088cedb2f0d714b1f4f803847b420879dd23afb128569be22942e475ad15847d992b2f7b6da3825778332ee046fee81ae47cd29c0e013da3c3b0245ed2606b3c7eb20c62801406e54379202556441bf626a251a239d93cf42ea56b84cbe82637be3bfed42b5f8e27ecaaf61a189508336dc97fc147ff19c1293217d5f411a412ba8dff37cb9d80c52d0a704ddb689f0284f7229ebce88b3add2d5bf0f3addae731bd06e6d53bbdf3e8df9c87d801c83b151f4ff7992bb1ab2088448f2f47b849f68\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "HEALTH",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{6000}}/up",
+					"host": [
+						"{{6000}}"
+					],
+					"path": [
+						"up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {",
+							"    const response = pm.response.json();",
+							"    pm.collectionVariables.set(\"access_token\", response.data.access_token);",
+							"    pm.collectionVariables.set(\"refresh_token\", response.data.refresh_token);",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{6000}}/api/auth/login",
+					"host": [
+						"{{6000}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:6000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.4.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Jan 2025 18:41:16 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"User has been logged successfully.\",\n    \"data\": {\n        \"token_type\": \"Bearer\",\n        \"expires_in\": 1296000,\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZTBkMTFjMC05Yzk1LTRmMTMtODk1ZS04NTZlYjE4MDI4MmYiLCJqdGkiOiIzYzRkZDU4MWExNzgxYmVkZGVlZDc4NGRmMWRiYjRiYzc3ODA0NDY2ZWU1NDkxZWJkYWQwOGMwYWQzMDY1OWE1NjA3OWIwMGMwY2MwYjQ3YyIsImlhdCI6MTczNzgzMDQ3NS45NDQ2MTQsIm5iZiI6MTczNzgzMDQ3NS45NDQ2MTYsImV4cCI6MTczOTEyNjQ3NS45MzYwNzYsInN1YiI6IjYiLCJzY29wZXMiOltdfQ.Czm4sDe8AZaTaclKy3ktqd4fa2Cqhx0MmY5TTb02uuxhuXS1Wk0odmEOt3c_2ywAwqEWX4W9rTtG9a_V5ec8UQxbgBonsS_XISId5n2G_ZjVahrDelooXSGuvravGtk0VctxJz-fQyBZF8UhZCYs8272wr1KTBwjN8Jg1q90VB_BONZG0Zl92A4UHNHzUeF_Uct5qNJfEQCTpIIsm44CCUsVXIws_ERYvTQSqrS_7dUox-kA4NtCeF_4La4I4hq5BnX003MHHNd5D0Dm9Y9FHxPDCqfxOUk1SS_Arz_1UN4GCciYUewdV7Q4ix1SrGVsqDjXm3XYsJLF95P_hSP6GvTZCCW4R_dyMcaRMq8CkogyWy2ivo--Mft3VlYEEseMy8BtianRIBbjT3K-oD2JnBZVIH1qKT2tvzVai8iZWLqbSGp6G5aWNYYtBhpaW4R8yPOw_c02dcY4ZsRaH4ePEEd9AYTIF6U22i--WdE0yMnUeFPdd8Nh9g9yu4gJoiwb6O2VdiVxQtPyWTpjqpzzuv3K9zi5cQsiEl8Eg2z9iLkBqs-irzzUj6jBamqAhzFjZIiEjd_mKPOfrr_pcDvZVuT-bo7AivepPPCOHWunmt0D1mUfFMnXvLKDmvStFCPKuM6yzC0e-AWqQvs_b_QpOnf1X6pDSVk5JpSWRuZtbQU\",\n        \"refresh_token\": \"def502004db27760c18a4d5a0829903d71aa5d3bdd2573006e2ded1b1fbdb8c1876a9eedc7f4d1c9f1764cffca2faf47981bfe79431b0a155bd4a28cbfd1488afd9e8d9c168391eedf41040c5c0bcb708384f5c9538790a0f4ff422a6814745e5b7b9e5b4344b580a6e769727a80f4a3f26d17f65c335329654421cae0f2c72b6223acc82974851955a283d3ca30e8ce86e5809d97f6a8b16b8393ac690dcf2a98608c73bc211d67d4a767069a2adfe162e5acdaa5e8e44a6b09a49d081564e595fe7792bf7bfc67a40aaa9d0d20b6cc41c962b19cb52571c7b1ec065caeebcca34159e6618400f5cc427a9527278bf8dfce3cb42e98f16544d2ecf5970a0b2853e0c7b876b36b333539c0e3ebc30865bca96e0552d83e3363198ad580af0d19e37742cf13232e4a1128028c0e179e96e78eef095fd578b69d1110df9cf42a809b9f056198d8b04221c02d795d874b80fb3dc4129cf570967d5e8cae6f09a0e15581d19120af3bfe69c15eb2770fc37a052bd67ab0c29eb921eac7af8226f17e7f3d4034\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "6000",
+			"value": "localhost:6000",
+			"type": "string"
+		},
+		{
+			"key": "football-data-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

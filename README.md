@@ -22,7 +22,48 @@ node setup.js
 
 > Download [API Postman collection](./football-api/etc/LARAVEL-FOOTBALL-API.postman_collection.json)
 
-> Open [Vue SPA link](http://localhost:5173)
+> Laravel API Server: http://localhost:6000
+
+> Local Vue SPA: http://localhost:5173
+
+## Considerations about my proposed solution:
+- DDD approach to isolate Domain logic from Laravel framework.
+- SOLID principles, Hexagonal Architecture and Design Patterns like Repository Pattern.
+- [Laravel Sail](https://laravel.com/docs/11.x/sail) package to simplify API setup (Sail uses docker and docker-compose under the hood).
+- Laravel API [.env](./football-api/.env) file published in GitHub repo for local setup simplicity.
+- Monorepo approach with a [setup.js](./setup.js) script file that helps to start the app.
+- SQLite database for simplicity during local development.
+- Laravel [migrations](https://laravel.com/docs/11.x/migrations) and [seeding](https://laravel.com/docs/11.x/seeding) to let database ready.
+- Automatically seed database Teams and Players data when Competitions are fetched from the external [Football API](https://www.football-data.org).
+- [Laravel Passport](https://laravel.com/docs/11.x/passport) to issue short-lived access tokens via the password grant, this strategy helps to simplify stateless authentication without affecting security aspects.
+- Use of [Spatie laravel-permission package](https://spatie.be/docs/laravel-permission/v6/introduction) to handle ACL strategy for user roles and permissions.
+- The API project follows the Hexagonal Architecture pattern. Also, it's structured using `modules`.
+With this, we can see that the current structure inside `src` directory is:
+
+```scala
+$ tree -L 4 src
+
+src
+|-- Team // Some Module
+|   |-- Application
+|   |   |-- Create // Inside the application layer all is structured by actions
+|   |   |   |-- CreateTeamRequest.php
+|   |   |   `-- TeamCreator.php
+|   |   |-- Find
+|   |   `-- FindAll
+|   |-- Domain
+|   |   |-- Team.php // The Aggregate of the Module
+|   |   |-- TeamNotExists.php // A Domain error
+|   |   `-- TeamsRepository.php // The `Interface` of the repository is inside Domain
+|   `-- Infrastructure // The infrastructure of our module
+|       |-- FootballApi
+|       `-- Persistence
+|           `-- Eloquent
+|               `--EloquentTeamsRepository.php // An implementation of the repository
+`-- Shared // Shared Kernel: Common infrastructure and domain shared between the different Bounded Contexts
+    |-- Domain
+    `-- Infrastructure
+```
 
 ## Setup Laravel API manually
 

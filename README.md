@@ -47,8 +47,6 @@ docker context use default
 
 # Configure passport
 ./vendor/bin/sail php artisan passport:client --password --name="Default Password Grant Client" --quiet
-
-./vendor/bin/sail php artisan passport:keys
 ```
 
 ## Setup Vue SPA manually

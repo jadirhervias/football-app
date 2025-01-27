@@ -1,18 +1,33 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { useAuthStore } from '@/stores/auth.ts';
+// import { useFetch } from "@/hooks/useFetch.ts";
+
+const authStore = useAuthStore();
+const { tokensExist, clearTokens } = authStore;
+
+async function logout() {
+  // const { status } = await useFetch('/proxy/api/logout', {
+  //   method: 'POST',
+  // }, true);
+  //
+  // if (204 === status.value) {
+    clearTokens();
+  // }
+}
+
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+      <nav v-if="tokensExist">
+        <button @click.prevent="logout" >
+          Salir
+        </button>
+        <RouterLink to="/competitions">Competiciones</RouterLink>
+        <RouterLink to="/teams">Equipos</RouterLink>
+        <RouterLink to="/players">Jugadores</RouterLink>
       </nav>
     </div>
   </header>
@@ -21,19 +36,9 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 24px;
   text-align: center;
   margin-top: 2rem;
 }
@@ -57,22 +62,6 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
   nav {
     text-align: left;
     margin-left: -1rem;

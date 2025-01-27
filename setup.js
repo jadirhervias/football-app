@@ -1,6 +1,18 @@
 const { exec, spawn } = require("child_process");
 const path = require("path");
 const os = require('os');
+const fs = require('fs');
+
+// Platform-dependent touch function
+async function createFile(filePath) {
+    if (os.platform() === 'win32') {
+        // On Windows, we use Node's fs module to create an empty file
+        await fs.promises.open(filePath, 'w'); // 'w' mode creates the file if it doesn't exist
+    } else {
+        // On Linux/macOS, we use the touch command
+        await runCommand(`touch ${filePath}`);
+    }
+}
 
 const LARAVEL_API_DIR = path.join(__dirname, "football-api");
 const VUE_SPA_DIR = path.join(__dirname, "football-spa");
@@ -42,7 +54,7 @@ async function setup() {
         await runCommand("composer install --ignore-platform-reqs");
 
         console.log("Creating SQLite database file...");
-        await runCommand("touch database/database.sqlite");
+        await createFile("database/database.sqlite");
 
         // Check for Linux platform and set Docker context if needed
         if (os.platform() === 'linux') {

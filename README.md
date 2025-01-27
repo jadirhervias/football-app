@@ -1,10 +1,15 @@
 # Setup project
 
 ## Requirements:
-  - Composer (v2.7.7 o mayor)
-  - Docker (v27.4.0 o mayor)
-  - Node (v22.12.0 o mayor)
-  - NPM (v10.9.0 o mayor)
+- PHP (8.3.14 o mayor)
+- Composer (v2.7.7 o mayor)
+- Docker (v27.4.0 o mayor)
+- Node (v22.12.0 o mayor)
+- NPM (v10.9.0 o mayor)
+
+> **⚠️ Note:** Ensure Docker is running before starting the services.
+
+> **Supported Platforms:** This setup is supported on macOS, Linux, and Windows (via WSL2).
 
 ## Setup all at once using Node
 
@@ -38,7 +43,7 @@ node setup.js
 - [Laravel Passport](https://laravel.com/docs/11.x/passport) to issue `short-lived access tokens` via the `password grant strategy`, this helps to simplify stateless authentication without affecting security aspects.
 - Use of [Spatie laravel-permission package](https://spatie.be/docs/laravel-permission/v6/introduction) to handle `ACL strategy` for user roles and permissions.
 - The [API project](./football-api) in this monorepo follows the Hexagonal Architecture pattern. Also, it's structured using `modules`.
-With this, we can see that the current structure inside `src` directory is:
+  With this, we can see that the current structure inside `src` directory is:
 
 ```scala
 $ tree -L 4 src
@@ -72,7 +77,7 @@ src
 cd football-api
 
 # Install dependencies
-composer install
+composer install --ignore-platform-reqs
 
 # Create database.sqlite file
 touch database/database.sqlite

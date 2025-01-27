@@ -29,7 +29,7 @@ node setup.js
 ## Considerations about my proposed solution:
 - `DDD` approach to isolate Domain logic from Laravel framework.
 - `SOLID principles`, `Hexagonal Architecture` and `Design Patterns` like Repository Pattern.
-- [Laravel Sail](https://laravel.com/docs/11.x/sail) package to simplify API setup (Sail uses `docker` and `docker-compose`).
+- [Laravel Sail](https://laravel.com/docs/11.x/sail) package to simplify API setup (Sail uses `docker` and [docker-compose](./football-api/docker-compose.yml)).
 - Laravel API [.env](./football-api/.env) file published in GitHub repo for local setup simplicity.
 - `Monorepo` approach with a [setup.js](./setup.js) script file that helps to start the app.
 - `SQLite database` for simplicity during local development.

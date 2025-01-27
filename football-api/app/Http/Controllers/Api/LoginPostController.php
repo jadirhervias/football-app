@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginPostRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Src\User\Application\Find\FindUserRequest;
 use Src\User\Application\Find\UserFinder;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginPostController extends Controller
 {
@@ -25,10 +27,21 @@ class LoginPostController extends Controller
     {
         $url = env('APP_URL') . '/oauth/token';
 
+        $client = DB::table('oauth_clients')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        if (!$client) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid credentials'
+            ], Response::HTTP_UNAUTHORIZED);
+        }
+
         $response = Http::post($url, [
             'grant_type' => 'password',
-            'client_id' => env('PASSPORT_PASSWORD_CLIENT_ID'),
-            'client_secret' => env('PASSPORT_PASSWORD_CLIENT_SECRET'),
+            'client_id' => $client->id,
+            'client_secret' => $client->secret,
             'username' => $request->input('email'),
             'password' => $request->input('password'),
             'scope' => '',
@@ -38,7 +51,7 @@ class LoginPostController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid credentials'
-            ], JsonResponse::HTTP_UNAUTHORIZED);
+            ], Response::HTTP_UNAUTHORIZED);
         }
 
         $user = $this->finder->__invoke(new FindUserRequest($request->input('email')));

@@ -60,7 +60,7 @@ src
 |       `-- Persistence
 |           `-- Eloquent
 |               `--EloquentTeamsRepository.php // An implementation of the repository
-`-- Shared // Shared Kernel: Common infrastructure and domain shared between the different Bounded Contexts
+`-- Shared // Shared Kernel: Common infrastructure and domain shared between the different modules
     |-- Domain
     `-- Infrastructure
 ```

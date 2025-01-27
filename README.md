@@ -12,8 +12,7 @@
 
 - Requirements:
     - Composer
-    - Laravel 11
-    - PHP 8.4
+    - Docker
 
 > Download [Postman collection](./football-api/etc/LARAVEL-FOOTBALL-API.postman_collection.json)
 

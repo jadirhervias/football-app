@@ -39,7 +39,7 @@ async function setup() {
         process.chdir(LARAVEL_API_DIR);
 
         console.log("Installing dependencies...");
-        await runCommand("composer install");
+        await runCommand("composer install --ignore-platform-reqs");
 
         console.log("Creating SQLite database file...");
         await runCommand("touch database/database.sqlite");
